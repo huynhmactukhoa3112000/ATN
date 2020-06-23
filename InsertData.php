@@ -26,12 +26,13 @@ list-style: none;
 
 if (empty(getenv("DATABASE_URL"))){
     echo '<p>The DB does not exist</p>';
-    $pdo = new PDO('pgsql:host=localhost;port=5432;dbname=mydb', 'postgres', '123456');
+    $pdo = new PDO('pgsql:host=localhost;port=5432;dbname=asm2', 'postgres', '123123');
 }  else {
-     
+     echo '<p>The DB exists</p>';
+     echo getenv("dbname");
    $db = parse_url(getenv("DATABASE_URL"));
    $pdo = new PDO("pgsql:" . sprintf(
-        "host=ec2-34-200-15-192.compute-1.amazonaws.com;port=5432;user=eserwscvrdgahc;password=4acf4bf1a57d5db44a787ca00629cb4e4719a2ea120c22bf9cfd84e368e89853;dbname=dpqj69sdonv1p",
+        "host=ec2-34-195-169-25.compute-1.amazonaws.com;port=5432;user=ofkkzlyhrgqvon;password=3ca8b5195671b9be562a825fd29b00e7aceb569b6b920ea40031c0e7ecf222a3;dbname=deooeltd4qvo32",
         $db["host"],
         $db["port"],
         $db["user"],
@@ -47,12 +48,12 @@ if($pdo === false){
 //Khởi tạo Prepared Statement
 //$stmt = $pdo->prepare('INSERT INTO student (customerid, customername, customerphone, address) values (:id, :name, :phone, :address)');
 
-//$stmt->bindParam(':id','cus01');
-//$stmt->bindParam(':name','hoan');
-//$stmt->bindParam(':email', '23454675784');
-//$stmt->bindParam(':class', '24 le loi');
+//$stmt->bindParam(':id','1');
+//$stmt->bindParam(':name','khoa1');
+//$stmt->bindParam(':email', '0987654321');
+//$stmt->bindParam(':class', 'danang');
 //$stmt->execute();
-//$sql = "INSERT INTO customer(customerid, customername, customerphone, address) VALUES('cus01', 'hoan','23454675784','24 le loi')";
+//$sql = "INSERT INTO customer(customerid, customername, customerphone, address) VALUES('1', 'khoa1','0987654321','danang')";
 $sql = "INSERT INTO customer(customerid, customername, customerphone, address)"
         . " VALUES('$_POST[customerid]','$_POST[customername]','$_P111OST[customerphone]','$_POST[address]')";
 $stmt = $pdo->prepare($sql);
